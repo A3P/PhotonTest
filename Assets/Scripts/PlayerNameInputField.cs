@@ -57,6 +57,7 @@ namespace Com.MyCompany.MyGame
             PhotonNetwork.NickName = value;
 
             PlayerPrefs.SetString(playerNamePrefKey, value);
+            Debug.Log(PlayerPrefs.GetString(playerNamePrefKey));
         }
 
         #endregion
