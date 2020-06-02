@@ -36,7 +36,6 @@ namespace Com.MyCompany.MyGame
         // </summary>
         void Start()
         {
-            Connect();
         }
 
         #endregion
@@ -54,6 +53,7 @@ namespace Com.MyCompany.MyGame
             if (PhotonNetwork.IsConnected)
             {
                 // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnJoinRandomFailed() and we'll create one.
+                Debug.Log("Connected!");
                 PhotonNetwork.JoinRandomRoom();
             }
             else
@@ -61,6 +61,11 @@ namespace Com.MyCompany.MyGame
                 // #Critical, we must first and foremost connect to Photon Online Server.
                 PhotonNetwork.ConnectUsingSettings();
                 PhotonNetwork.GameVersion = gameVersion;
+            }
+            
+            if (PhotonNetwork.IsConnected)
+            {
+                Debug.Log("Connected!");
             }
         }
 
