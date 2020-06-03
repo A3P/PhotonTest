@@ -21,6 +21,22 @@ namespace Com.MyCompany.MyGame
 
         #endregion
 
+        #region Private Methods
+
+        void LoadArena(){
+            if(!PhotonNetwork.IsMasterClient){
+                Debug.LogError("PhtotonNetwork : Trying to Load a level but we are not the master Client");
+            }
+            int playerCount = 2;
+            if(PhotonNetwork.CurrentRoom.PlayerCount > 2){
+                playerCount = 4;
+            }
+            Debug.LogFormat("PhotonNetwork : Loading Level : {0}", playerCount);
+            PhotonNetwork.LoadLevel("Room for " + playerCount);
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void LeaveRoom()
