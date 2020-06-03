@@ -99,6 +99,8 @@ namespace Com.MyCompany.MyGame
 
         public override void OnDisconnected(DisconnectCause cause) {
             Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0},", cause);
+            progressLabel.SetActive(false);
+            controlPanel.SetActive(true);
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
