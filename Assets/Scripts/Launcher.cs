@@ -10,6 +10,12 @@ namespace Com.MyCompany.MyGame
     {
         #region Private Serializable Fields
 
+        
+        [Tooltip("The maximum number of players per room. When a room is full, "
+        +"it can't be joined by new players, and so new room will be created")]
+        [SerializeField]
+        private byte maxPlayersPerRoom = 4;
+
         #endregion
 
         #region Private Fields
@@ -102,7 +108,7 @@ namespace Com.MyCompany.MyGame
 
             // Failing to join a random room maybe due to all of them being full or none exists.
             // In that case create a new room.
-            PhotonNetwork.CreateRoom(null, new RoomOptions());
+            PhotonNetwork.CreateRoom(null, new RoomOptions{MaxPlayers = maxPlayersPerRoom});
         }
 
         public override void OnJoinedRoom()
