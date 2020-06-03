@@ -19,6 +19,30 @@ namespace Com.MyCompany.MyGame
             SceneManager.LoadScene(0);
         }
 
+        public override void OnPlayerEnteredRoom(Player other){
+            // Not seen if you are the player connecting
+            Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName);
+        
+            if (PhotonNetwork.IsMasterClient) {
+                // called before OnPlayerLeftRoom
+                Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
+            
+                LoadArena();
+            }
+        }
+
+        public override void OnPlayerLeftRoom(Player other) {
+            // Seen when others disconnect
+            Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName);
+        
+            if (PhotonNetwork.IsMasterClient) {
+                // called before OnPlayerLeftRoom
+                Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
+            
+                LoadArena();
+            }
+        }
+
         #endregion
 
         #region Private Methods
